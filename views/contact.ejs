@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Contact</title>
-  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <h1>Contact</h1>
@@ -14,14 +13,20 @@
     <h2>Message reçu :</h2>
     <p><strong>Nom :</strong> <%= nom %></p>
     <p><strong>Message :</strong> <%= message %></p>
+    <% if (fichier) { %>
+      <p><strong>Fichier envoyé :</strong> <%= fichier %></p>
+    <% } %>
   <% } %>
 
-  <form method="POST" action="/contact">
+  <form method="POST" action="/contact" enctype="multipart/form-data">
     <label for="nom">Nom :</label><br>
     <input type="text" id="nom" name="nom" required><br><br>
 
     <label for="message">Message :</label><br>
     <input type="text" id="message" name="message" required><br><br>
+
+    <label for="fichier">Joindre un fichier :</label><br>
+    <input type="file" id="fichier" name="fichier"><br><br>
 
     <button type="submit">Envoyer</button>
   </form>
